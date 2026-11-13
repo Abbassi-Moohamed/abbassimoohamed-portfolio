@@ -27,7 +27,6 @@ export default class Resources extends EventEmitter
             { name: 'matcapBlue', source: './models/matcaps/blue.png', type: 'texture' },
             { name: 'matcapYellow', source: './models/matcaps/yellow.png', type: 'texture' },
             { name: 'matcapMetal', source: './models/matcaps/metal.png', type: 'texture' },
-            // { name: 'matcapGold', source: './models/matcaps/gold.png', type: 'texture' },
 
             // Intro
             { name: 'introStaticBase', source: './models/intro/static/base.glb' },
@@ -86,8 +85,6 @@ export default class Resources extends EventEmitter
             { name: 'carDefaultBackLightsBrake', source: './models/car/default/backLightsBrake.glb' },
             { name: 'carDefaultBackLightsReverse', source: './models/car/default/backLightsReverse.glb' },
             { name: 'carDefaultAntena', source: './models/car/default/antena.glb' },
-            // { name: 'carDefaultBunnyEarLeft', source: './models/car/default/bunnyEarLeft.glb' },
-            // { name: 'carDefaultBunnyEarRight', source: './models/car/default/bunnyEarRight.glb' },
 
             // Car default
             { name: 'carCyberTruckChassis', source: './models/car/cyberTruck/chassis.glb' },
@@ -128,29 +125,6 @@ export default class Resources extends EventEmitter
             // Horn
             { name: 'hornBase', source: './models/horn/base.glb' },
             { name: 'hornCollision', source: './models/horn/collision.glb' },
-
-            // // Distinction A
-            // { name: 'distinctionAStaticBase', source: './models/distinctionA/static/base.glb' },
-            // { name: 'distinctionAStaticCollision', source: './models/distinctionA/static/collision.glb' },
-            // { name: 'distinctionAStaticFloorShadow', source: './models/distinctionA/static/floorShadow.png', type: 'texture' },
-
-            // // Distinction B
-            // { name: 'distinctionBStaticBase', source: './models/distinctionB/static/base.glb' },
-            // { name: 'distinctionBStaticCollision', source: './models/distinctionB/static/collision.glb' },
-            // { name: 'distinctionBStaticFloorShadow', source: './models/distinctionB/static/floorShadow.png', type: 'texture' },
-
-            // // Distinction C
-            // { name: 'distinctionCStaticBase', source: './models/distinctionC/static/base.glb' },
-            // { name: 'distinctionCStaticCollision', source: './models/distinctionC/static/collision.glb' },
-            // { name: 'distinctionCStaticFloorShadow', source: './models/distinctionC/static/floorShadow.png', type: 'texture' },
-
-            // // Cone
-            // { name: 'coneBase', source: './models/cone/base.glb' },
-            // { name: 'coneCollision', source: './models/cone/collision.glb' },
-
-            // // Awwwards trophy
-            // { name: 'awwwardsTrophyBase', source: './models/awwwardsTrophy/base.glb' },
-            // { name: 'awwwardsTrophyCollision', source: './models/awwwardsTrophy/collision.glb' },
 
             // Webby trophy
             { name: 'webbyTrophyBase', source: './models/webbyTrophy/base.glb' },
@@ -201,9 +175,6 @@ export default class Resources extends EventEmitter
             { name: 'wig3', source: './models/wigs/wig3.glb' },
             { name: 'wig4', source: './models/wigs/wig4.glb' },
 
-            // // Egg
-            // { name: 'eggBase', source: './models/egg/base.glb' },
-            // { name: 'eggCollision', source: './models/egg/collision.glb' },
         ])
 
         this.loader.on('fileEnd', (_resource, _data) =>

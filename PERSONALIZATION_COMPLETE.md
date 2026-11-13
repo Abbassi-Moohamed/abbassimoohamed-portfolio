@@ -105,10 +105,10 @@ Update `src/javascript/Resources.js` to reference your projects:
 
 ### 6. **Update Favicon & Branding**
 Replace the existing favicon with your own:
-- `src/favicon/` directory contains favicon files
+- `static/favicon/` directory contains the favicon files served by the site
 - Use favicon generator: https://realfavicongenerator.net/
 - Generate from your logo/image
-- Extract files to `src/favicon/`
+- Extract files to `static/favicon/`
 
 ### 7. **Customize Colors & Styling**
 - Edit `src/style/main.css` for UI changes

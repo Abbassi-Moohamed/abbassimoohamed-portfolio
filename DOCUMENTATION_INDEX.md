@@ -173,7 +173,7 @@ EDUCATION:
 | ⏳ TODO | Projects | `src/javascript/World/Sections/` |
 | ⏳ TODO | Models | `static/models/` |
 | ⏳ TODO | Contact form | Anywhere you want |
-| ⏳ TODO | Favicon | `src/favicon/` |
+| ✅ DONE | Favicon | `static/favicon/` |
 
 ---
 

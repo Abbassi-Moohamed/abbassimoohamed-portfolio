@@ -110,9 +110,9 @@ export default class Resources extends EventEmitter
             { name: 'informationStaticFloorShadow', source: './models/information/static/floorShadow-abbassi.png', type: 'texture' },
             { name: 'informationTunisiaFlag', source: './models/information/static/tunisiaFlag.svg', type: 'texture' },
             { name: 'informationContactInstagramLabel', source: './models/information/static/contactInstagramLabel.svg', type: 'texture' },
-            { name: 'informationContactGithubLabel', source: './models/information/static/contactGithubLabel.png', type: 'texture' },
-            { name: 'informationContactLinkedinLabel', source: './models/information/static/contactLinkedinLabel.png', type: 'texture' },
-            { name: 'informationContactMailLabel', source: './models/information/static/contactMailLabel.png', type: 'texture' },
+            { name: 'informationContactGithubLabel', source: './models/information/static/contactGithubLabel.svg', type: 'texture' },
+            { name: 'informationContactLinkedinLabel', source: './models/information/static/contactLinkedinLabel.svg', type: 'texture' },
+            { name: 'informationContactMailLabel', source: './models/information/static/contactMailLabel.svg', type: 'texture' },
 
             { name: 'informationActivities', source: './models/information/static/activities.svg', type: 'texture' },
 

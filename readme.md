@@ -51,7 +51,7 @@ npm run build
 **Name:** Abbassi Moohamed  
 **Title:** Computer Engineer  
 **Location:** Tunis, Tunisia  
-**Email:** mouhamed.abbassi@esprit.tn  
+**Email:** abbassimoohamed@gmail.com  
 **Phone:** +216 50 922 140
 
 ### Specializations

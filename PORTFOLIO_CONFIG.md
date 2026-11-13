@@ -5,7 +5,7 @@
 **Name:** Abbassi Mouhamed  
 **Title:** Computer Engineer  
 **Location:** Tunis, Tunisia  
-**Email:** mouhamed.abbassi@esprit.tn  
+**Email:** abbassimoohamed@gmail.com  
 **Phone:** +216 50 922 140
 
 ### Professional Summary
@@ -104,7 +104,7 @@ Create new section files in `src/javascript/World/Sections/` following the exist
 ## Social Links to Update
 
 - **GitHub:** https://github.com
-- **Email:** mouhamed.abbassi@esprit.tn
+- **Email:** abbassimoohamed@gmail.com
 - **Phone:** +216 50 922 140
 
 ---

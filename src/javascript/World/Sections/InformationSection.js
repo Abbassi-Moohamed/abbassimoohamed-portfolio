@@ -91,10 +91,10 @@ export default class InformationSection
         this.links.x = 1.95
         this.links.y = - 1.5
         this.links.halfExtents = {}
-        this.links.halfExtents.x = 1
+        this.links.halfExtents.x = 0.75
         this.links.halfExtents.y = 1
         this.links.distanceBetween = 2.4
-        this.links.labelWidth = this.links.halfExtents.x * 2 + 1
+        this.links.labelWidth = 1.8
         this.links.labelGeometry = new THREE.PlaneGeometry(this.links.labelWidth, this.links.labelWidth * 0.25, 1, 1)
         this.links.labelOffset = - 1.6
         this.links.items = []

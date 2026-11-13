@@ -103,7 +103,7 @@ Upload the `dist/` folder to:
 - Name: Abbassi Mouhamed
 - Title: Computer Engineer
 - Location: Tunis, Tunisia
-- Email: mouhamed.abbassi@esprit.tn
+- Email: abbassimoohamed@gmail.com
 - Phone: +216 50 922 140
 - Specializations: Full-Stack Web Development, 3D Visualization, Cloud Architecture
 
@@ -207,7 +207,7 @@ A: Yes, set `threejsJourneyPrevent` in localStorage or modify `src/javascript/Th
 Name:      Abbassi Mouhamed
 Title:     Computer Engineer
 Location:  Tunis, Tunisia
-Email:     mouhamed.abbassi@esprit.tn
+Email:     abbassimoohamed@gmail.com
 Phone:     +216 50 922 140
 Domain:    abbassi-mouhamed.com (to be updated in HTML)
 GitHub:    (add your username in src/index.html line 73)

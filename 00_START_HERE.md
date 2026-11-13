@@ -13,7 +13,7 @@ Your interactive 3D portfolio website has been **fully personalized** with your 
 - Your title: **Computer Engineer** - throughout the site
 - Your specialization: **Full-Stack Web Development & 3D Visualization**
 - Your location: **Tunis, Tunisia**
-- Your contact: **mouhamed.abbassi@esprit.tn** | **+216 50 922 140**
+- Your contact: **abbassimoohamed@gmail.com** | **+216 50 922 140**
 
 ### 2. **Files Updated**
 - ✅ `src/index.html` - Meta tags, title, dialogue
@@ -314,7 +314,7 @@ Before going live, ensure:
 
 ```
 NAME:           Abbassi Mouhamed
-EMAIL:          mouhamed.abbassi@esprit.tn
+EMAIL:          abbassimoohamed@gmail.com
 PHONE:          +216 50 922 140
 LOCATION:       Tunis, Tunisia
 DOMAIN:         abbassi-mouhamed.com (ready to set)

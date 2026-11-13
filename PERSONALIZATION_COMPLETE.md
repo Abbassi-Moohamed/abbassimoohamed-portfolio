@@ -85,7 +85,7 @@ Your portfolio uses 3D models in various locations:
 
 ### 4. **Update Contact Information**
 Add your actual contact details:
-- Email: mouhamed.abbassi@esprit.tn
+- Email: abbassimoohamed@gmail.com
 - Phone: +216 50 922 140
 - LinkedIn: (add link)
 - Twitter/X: (add link)

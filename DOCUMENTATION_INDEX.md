@@ -138,7 +138,7 @@ All of this is now in your portfolio:
 NAME:           Abbassi Mouhamed
 TITLE:          Computer Engineer
 LOCATION:       Tunis, Tunisia
-EMAIL:          mouhamed.abbassi@esprit.tn
+EMAIL:          abbassimoohamed@gmail.com
 PHONE:          +216 50 922 140
 SPECIALIZATION: Full-Stack Development & 3D Visualization
 

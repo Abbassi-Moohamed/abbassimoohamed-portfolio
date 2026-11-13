@@ -64,7 +64,7 @@ export default class ProjectsSection
         this.resources.items.areaOpenTexture.magFilter = THREE.NearestFilter
         this.resources.items.areaOpenTexture.minFilter = THREE.LinearFilter
         this.meshes.boardPlane = this.resources.items.projectsBoardPlane.scene.children[0]
-        this.meshes.areaLabel = new THREE.Mesh(new THREE.PlaneGeometry(2, 0.5), new THREE.MeshBasicMaterial({ transparent: true, depthWrite: false, color: palette.silver, alphaMap: this.resources.items.areaOpenTexture }))
+        this.meshes.areaLabel = new THREE.Mesh(new THREE.PlaneGeometry(2, 0.5), new THREE.MeshBasicMaterial({ transparent: true, depthWrite: false, color: palette.floorText, alphaMap: this.resources.items.areaOpenTexture }))
         this.meshes.areaLabel.matrixAutoUpdate = false
     }
 

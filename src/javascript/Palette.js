@@ -7,7 +7,10 @@ const palette = {
     warmSilver: '#9D8581',
     silver: '#C0C0C0',
     white: '#FFFFFF',
-    mutedCopper: '#8F5F53'
+    mutedCopper: '#8F5F53',
+    car: '#789597',
+    floorText: '#292D32',
+    floorAccent: '#8F5F53'
 }
 
 export default palette

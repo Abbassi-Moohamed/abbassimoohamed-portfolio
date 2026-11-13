@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import CANNON from 'cannon'
 import { TransformControls } from 'three/examples/jsm/controls/TransformControls.js'
+import palette from '../Palette.js'
 
 export default class Car
 {
@@ -108,6 +109,7 @@ export default class Car
         this.chassis = {}
         this.chassis.offset = new THREE.Vector3(0, 0, - 0.28)
         this.chassis.object = this.objects.getConvertedMesh(this.models.chassis.scene.children)
+        this.setChassisColor()
         this.chassis.object.position.copy(this.physics.car.chassis.body.position)
         this.chassis.oldPosition = this.chassis.object.position.clone()
         this.container.add(this.chassis.object)
@@ -129,6 +131,21 @@ export default class Car
 
             // Update position
             this.position.copy(this.chassis.object.position)
+        })
+    }
+
+    setChassisColor()
+    {
+        const materialName = this.config.cyberTruck ? 'metal' : 'red'
+        const originalMaterial = this.materials.shades.items[materialName]
+        const bodyMaterial = new THREE.MeshBasicMaterial({ color: palette.car })
+
+        this.chassis.object.traverse((_part) =>
+        {
+            if(_part.isMesh && _part.material === originalMaterial)
+            {
+                _part.material = bodyMaterial
+            }
         })
     }
 

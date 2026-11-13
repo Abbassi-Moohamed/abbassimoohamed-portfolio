@@ -255,7 +255,7 @@ export default class InformationSection
             item.texture.minFilter = THREE.LinearFilter
 
             // Create label
-            item.labelMesh = new THREE.Mesh(this.links.labelGeometry, new THREE.MeshBasicMaterial({ wireframe: false, color: palette.silver, alphaMap: _option.labelTexture, depthTest: true, depthWrite: false, transparent: true }))
+            item.labelMesh = new THREE.Mesh(this.links.labelGeometry, new THREE.MeshBasicMaterial({ wireframe: false, color: palette.floorText, alphaMap: _option.labelTexture, depthTest: true, depthWrite: false, transparent: true }))
             item.labelMesh.position.x = item.x + this.links.labelWidth * 0.5 - this.links.halfExtents.x
             item.labelMesh.position.y = item.y + this.links.labelOffset
             item.labelMesh.matrixAutoUpdate = false
@@ -286,7 +286,7 @@ export default class InformationSection
         this.activities.texture.minFilter = THREE.LinearFilter
 
         // Material
-        this.activities.material = new THREE.MeshBasicMaterial({ wireframe: false, color: palette.silver, alphaMap: this.activities.texture, transparent: true })
+        this.activities.material = new THREE.MeshBasicMaterial({ wireframe: false, color: palette.floorText, alphaMap: this.activities.texture, transparent: true })
 
         // Mesh
         this.activities.mesh = new THREE.Mesh(this.activities.geometry, this.activities.material)

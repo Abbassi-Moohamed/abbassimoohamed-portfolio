@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#000102"/>
+  <path d="M0 0h18v675H0z" fill="#8F5F53"/>
+  <text x="72" y="78" fill="#6E6B6C" font-family="Arial,sans-serif" font-size="25" font-weight="700" letter-spacing="3">2026 - PRESENT  /  FOUNDER &amp; FULL-STACK ENGINEER</text>
+  <text x="72" y="175" fill="#FFFFFF" font-family="Arial,sans-serif" font-size="70" font-weight="700">FRAME BEAUTY</text>
+  <text x="72" y="245" fill="#C0C0C0" font-family="Arial,sans-serif" font-size="31">A mobile-first SaaS platform for beauty businesses.</text>
+  <text x="72" y="316" fill="#C0C0C0" font-family="Arial,sans-serif" font-size="28">Social feed, short-form video, appointments, live queues,</text>
+  <text x="72" y="357" fill="#C0C0C0" font-family="Arial,sans-serif" font-size="28">service workflows, and a business marketplace.</text>
+  <rect x="72" y="425" width="1056" height="1" fill="#565050"/>
+  <text x="72" y="484" fill="#6E6B6C" font-family="Arial,sans-serif" font-size="23" font-weight="700" letter-spacing="2">REAL-TIME PRODUCT  /  SECURE ACCESS  /  AUTOMATED DELIVERY</text>
+  <text x="72" y="555" fill="#6e6b6c" font-family="Arial,sans-serif" font-size="22">Next.js  |  TypeScript  |  Express  |  MongoDB  |  Socket.IO  |  FCM  |  Docker</text>
+</svg>

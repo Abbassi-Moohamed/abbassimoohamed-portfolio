@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="512" viewBox="0 0 1024 512">
+  <g fill="#C0C0C0" font-family="Arial Narrow, Arial, sans-serif">
+    <text x="0" y="68" font-size="68" font-weight="700" letter-spacing="-2">EXPERIENCE</text>
+    <text x="0" y="132" font-size="22" font-weight="700">EDUCATION</text>
+    <text x="0" y="162" font-size="19">National Engineering Degree</text>
+    <text x="0" y="190" font-size="19">Computer Science  |  ESPRIT  |  2020 - 2025</text>
+    <text x="0" y="244" font-size="22" font-weight="700">LANGUAGES</text>
+    <text x="0" y="274" font-size="19">Arabic (native)  |  French (B2)</text>
+    <text x="0" y="302" font-size="19">English (B2+)</text>
+    <text x="0" y="354" font-size="22" font-weight="700">VOLUNTEER</text>
+    <text x="0" y="384" font-size="19">ESPRIT Health Club  |  2022 - 2025</text>
+    <text x="0" y="412" font-size="19">Head of Communication &amp; Marketing</text>
+    <text x="0" y="466" font-size="19">Chess  |  11th national ranking</text>
+    <text x="0" y="494" font-size="19">FPS games  |  Football</text>
+    <text x="396" y="112" font-size="27" font-weight="700">FOUNDER &amp; FULL-STACK ENGINEER</text>
+    <text x="396" y="145" font-size="22">FRAME BEAUTY  |  2026 - PRESENT</text>
+    <text x="396" y="220" font-size="27" font-weight="700">FINAL-YEAR PROJECT &amp; FULL-STACK DEVELOPMENT</text>
+    <text x="396" y="253" font-size="22">MASHROOM  |  FEB - AUG 2025</text>
+    <text x="396" y="328" font-size="27" font-weight="700">INTERN  |  NEXT.JS / EXPRESS.JS DEVELOPMENT</text>
+    <text x="396" y="361" font-size="22">SOMATEL  |  JUL - SEP 2024</text>
+    <text x="396" y="436" font-size="27" font-weight="700">INTERN  |  MERN STACK DEVELOPMENT</text>
+    <text x="396" y="469" font-size="22">SWIFT CODE  |  JUN - AUG 2023</text>
+  </g>
+</svg>

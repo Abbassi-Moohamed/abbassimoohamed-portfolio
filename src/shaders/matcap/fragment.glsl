@@ -5,6 +5,7 @@
 uniform vec3 diffuse;
 uniform float opacity;
 uniform sampler2D matcap;
+uniform vec3 uPaletteTint;
 
 varying vec3 vViewPosition;
 
@@ -65,6 +66,8 @@ void main() {
 
         vec4 matcapColor = texture2D( matcap, uv );
         // matcapColor = matcapTexelToLinear( matcapColor );
+        float matcapLuminance = dot( matcapColor.rgb, vec3( 0.299, 0.587, 0.114 ) );
+        matcapColor.rgb = vec3( matcapLuminance ) * uPaletteTint;
 
     #else
 

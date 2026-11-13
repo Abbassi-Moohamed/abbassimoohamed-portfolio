@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import palette from '../../Palette.js'
 
 export default class InformationSection
 {
@@ -19,7 +20,6 @@ export default class InformationSection
         this.container.matrixAutoUpdate = false
 
         this.setStatic()
-        this.setBaguettes()
         this.setLinks()
         this.setActivities()
         this.setTiles()
@@ -27,43 +27,60 @@ export default class InformationSection
 
     setStatic()
     {
-        this.objects.add({
-            base: this.resources.items.informationStaticBase.scene,
-            collision: this.resources.items.informationStaticCollision.scene,
+        const base = this.resources.items.informationStaticBase.scene.clone(true)
+        const collision = this.resources.items.informationStaticCollision.scene.clone(true)
+        const missingParts = []
+        const removePart = (_root, _name) =>
+        {
+            const parts = []
+            _root.traverse((_part) =>
+            {
+                if(_part.name === _name)
+                {
+                    parts.push(_part)
+                }
+            })
+
+            if(!parts.length)
+            {
+                missingParts.push(_name)
+                return
+            }
+
+            for(const part of parts)
+            {
+                part.parent.remove(part)
+            }
+        }
+
+        removePart(collision, 'Cube.067')
+
+        if(missingParts.length)
+        {
+            console.warn(`Information scene is missing expected model parts: ${missingParts.join(', ')}`)
+        }
+
+        const flagMesh = new THREE.Mesh(new THREE.PlaneGeometry(2.2, 1.4667))
+        flagMesh.name = 'abbassiTunisiaFlag'
+        flagMesh.position.set(- 3.1306, 5.025, 2.67)
+        flagMesh.rotation.x = Math.PI / 2
+        base.add(flagMesh)
+
+        const staticObject = this.objects.add({
+            base,
+            collision,
             floorShadowTexture: this.resources.items.informationStaticFloorShadowTexture,
             offset: new THREE.Vector3(this.x, this.y, 0),
+            duplicated: true,
             mass: 0
         })
-    }
 
-    setBaguettes()
-    {
-        this.baguettes = {}
-
-        this.baguettes.x = - 4
-        this.baguettes.y = 6
-
-        this.baguettes.a = this.objects.add({
-            base: this.resources.items.informationBaguetteBase.scene,
-            collision: this.resources.items.informationBaguetteCollision.scene,
-            offset: new THREE.Vector3(this.x + this.baguettes.x - 0.56, this.y + this.baguettes.y - 0.666, 0.2),
-            rotation: new THREE.Euler(0, 0, - Math.PI * 37 / 180),
-            duplicated: true,
-            shadow: { sizeX: 0.6, sizeY: 3.5, offsetZ: - 0.15, alpha: 0.35 },
-            mass: 1.5,
-            // soundName: 'woodHit'
-        })
-
-        this.baguettes.b = this.objects.add({
-            base: this.resources.items.informationBaguetteBase.scene,
-            collision: this.resources.items.informationBaguetteCollision.scene,
-            offset: new THREE.Vector3(this.x + this.baguettes.x - 0.8, this.y + this.baguettes.y - 2, 0.5),
-            rotation: new THREE.Euler(0, - 0.5, Math.PI * 60 / 180),
-            duplicated: true,
-            shadow: { sizeX: 0.6, sizeY: 3.5, offsetZ: - 0.15, alpha: 0.35 },
-            mass: 1.5,
-            sleep: false,
-            // soundName: 'woodHit'
+        const flagTexture = this.resources.items.informationTunisiaFlagTexture.clone()
+        flagTexture.colorSpace = THREE.SRGBColorSpace
+        flagTexture.needsUpdate = true
+        staticObject.container.getObjectByName('abbassiTunisiaFlag').material = new THREE.MeshBasicMaterial({
+            map: flagTexture,
+            side: THREE.DoubleSide
         })
     }
 
@@ -89,20 +106,20 @@ export default class InformationSection
         // Options
         this.links.options = [
             {
-                href: 'https://twitter.com/bruno_simon/',
-                labelTexture: this.resources.items.informationContactTwitterLabelTexture
+                href: 'mailto:abbassimoohamed@gmail.com',
+                labelTexture: this.resources.items.informationContactMailLabelTexture
             },
             {
-                href: 'https://github.com/brunosimon/',
-                labelTexture: this.resources.items.informationContactGithubLabelTexture
-            },
-            {
-                href: 'https://www.linkedin.com/in/simonbruno77/',
+                href: 'https://www.linkedin.com/in/abbassi-moohamed/',
                 labelTexture: this.resources.items.informationContactLinkedinLabelTexture
             },
             {
-                href: 'mailto:simon.bruno.77@gmail.com',
-                labelTexture: this.resources.items.informationContactMailLabelTexture
+                href: 'https://github.com/Abbassi-Moohamed',
+                labelTexture: this.resources.items.informationContactGithubLabelTexture
+            },
+            {
+                href: 'https://www.instagram.com/abbassi.moohamed/',
+                labelTexture: this.resources.items.informationContactInstagramLabelTexture
             }
         ]
 
@@ -132,7 +149,7 @@ export default class InformationSection
             item.texture.minFilter = THREE.LinearFilter
 
             // Create label
-            item.labelMesh = new THREE.Mesh(this.links.labelGeometry, new THREE.MeshBasicMaterial({ wireframe: false, color: 0xffffff, alphaMap: _option.labelTexture, depthTest: true, depthWrite: false, transparent: true }))
+            item.labelMesh = new THREE.Mesh(this.links.labelGeometry, new THREE.MeshBasicMaterial({ wireframe: false, color: palette.silver, alphaMap: _option.labelTexture, depthTest: true, depthWrite: false, transparent: true }))
             item.labelMesh.position.x = item.x + this.links.labelWidth * 0.5 - this.links.halfExtents.x
             item.labelMesh.position.y = item.y + this.links.labelOffset
             item.labelMesh.matrixAutoUpdate = false
@@ -163,7 +180,7 @@ export default class InformationSection
         this.activities.texture.minFilter = THREE.LinearFilter
 
         // Material
-        this.activities.material = new THREE.MeshBasicMaterial({ wireframe: false, color: 0xffffff, alphaMap: this.activities.texture, transparent: true })
+        this.activities.material = new THREE.MeshBasicMaterial({ wireframe: false, color: palette.silver, alphaMap: this.activities.texture, transparent: true })
 
         // Mesh
         this.activities.mesh = new THREE.Mesh(this.activities.geometry, this.activities.material)

@@ -7,6 +7,7 @@ import World from './World/index.js'
 import Resources from './Resources.js'
 import Camera from './Camera.js'
 import ThreejsJourney from './ThreejsJourney.js'
+import palette from './Palette.js'
 
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js'
@@ -87,7 +88,7 @@ export default class Application
             powerPreference: 'high-performance'
         })
         // this.renderer.setClearColor(0x414141, 1)
-        this.renderer.setClearColor(0x000000, 1)
+        this.renderer.setClearColor(palette.obsidian, 1)
         // this.renderer.setPixelRatio(Math.min(Math.max(window.devicePixelRatio, 1.5), 2))
         this.renderer.setPixelRatio(2)
         this.renderer.setSize(this.sizes.viewport.width, this.sizes.viewport.height)
@@ -162,12 +163,12 @@ export default class Application
         }
 
         this.passes.glowsPass = new ShaderPass(GlowsPass)
-        this.passes.glowsPass.color = '#ffcfe0'
+        this.passes.glowsPass.color = palette.silver
         this.passes.glowsPass.material.uniforms.uPosition.value = new THREE.Vector2(0, 0.25)
         this.passes.glowsPass.material.uniforms.uRadius.value = 0.7
         this.passes.glowsPass.material.uniforms.uColor.value = new THREE.Color(this.passes.glowsPass.color)
         this.passes.glowsPass.material.uniforms.uColor.value.convertLinearToSRGB()
-        this.passes.glowsPass.material.uniforms.uAlpha.value = 0.55
+        this.passes.glowsPass.material.uniforms.uAlpha.value = 0.65
 
         // Debug
         if(this.debug)

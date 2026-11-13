@@ -2,6 +2,7 @@ import * as THREE from 'three'
 
 import ProjectBoardMaterial from '../../Materials/ProjectBoard.js'
 import gsap from 'gsap'
+import palette from '../../Palette.js'
 
 export default class Project
 {
@@ -41,7 +42,7 @@ export default class Project
         this.boards.xStart = - 5
         this.boards.xInter = 5
         this.boards.y = 5
-        this.boards.color = '#8e7161'
+        this.boards.color = palette.graphite
         this.boards.threeColor = new THREE.Color(this.boards.color)
 
         if(this.debug)

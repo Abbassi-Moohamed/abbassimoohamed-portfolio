@@ -238,13 +238,12 @@ export default class Sounds
         this.engine.volume.min = 0.4
         this.engine.volume.max = 1
         this.engine.volume.master = 0
+        this.engine.started = false
 
         this.engine.sound = new Howl({
             src: ['./sounds/engines/1/low_off.mp3'],
             loop: true
         })
-
-        this.engine.sound.play()
 
         // Time tick
         this.time.on('tick', () =>
@@ -277,6 +276,17 @@ export default class Sounds
             folder.add(this.engine, 'accelerationMultiplier').step(0.01).min(0).max(100).name('accelerationMultiplier')
             folder.add(this.engine, 'progress').step(0.01).min(0).max(1).name('progress').listen()
         }
+    }
+
+    start()
+    {
+        if(this.engine.started)
+        {
+            return
+        }
+
+        this.engine.started = true
+        this.engine.sound.play()
     }
 
     add(_options)

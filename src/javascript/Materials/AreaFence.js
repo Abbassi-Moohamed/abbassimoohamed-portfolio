@@ -7,6 +7,8 @@ export default function()
 {
     const uniforms = {
         uTime: { value: null },
+        uBorderColor: { value: null },
+        uStrikeColor: { value: null },
         uBorderAlpha: { value: null },
         uStrikeAlpha: { value: null }
     }

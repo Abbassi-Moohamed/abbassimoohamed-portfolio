@@ -1,4 +1,6 @@
 uniform float uTime;
+uniform vec3 uBorderColor;
+uniform vec3 uStrikeColor;
 uniform float uBorderAlpha;
 uniform float uStrikeAlpha;
 
@@ -25,7 +27,8 @@ void main()
 
     float alpha = max(strikeStrength, borderStrength);
 
-    gl_FragColor = vec4(vec3(1.0), alpha);
+    vec3 color = mix(uBorderColor, uStrikeColor, step(borderStrength, strikeStrength));
+    gl_FragColor = vec4(color, alpha);
 
     // gl_FragColor = vec4(vUv, 1.0, 1.0);
 }

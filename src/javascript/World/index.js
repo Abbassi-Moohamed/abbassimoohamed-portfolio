@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import palette from '../Palette.js'
 import Materials from './Materials.js'
 import Floor from './Floor.js'
 import Shadows from './Shadows.js'
@@ -190,7 +191,7 @@ export default class World
         this.startingScreen.loadingLabel.texture.magFilter = THREE.NearestFilter
         this.startingScreen.loadingLabel.texture.minFilter = THREE.LinearFilter
         this.startingScreen.loadingLabel.texture.needsUpdate = true
-        this.startingScreen.loadingLabel.material = new THREE.MeshBasicMaterial({ transparent: true, depthWrite: false, color: 0xffffff, alphaMap: this.startingScreen.loadingLabel.texture })
+        this.startingScreen.loadingLabel.material = new THREE.MeshBasicMaterial({ transparent: true, depthWrite: false, color: palette.white, alphaMap: this.startingScreen.loadingLabel.texture })
         this.startingScreen.loadingLabel.mesh = new THREE.Mesh(this.startingScreen.loadingLabel.geometry, this.startingScreen.loadingLabel.material)
         this.startingScreen.loadingLabel.mesh.matrixAutoUpdate = false
         this.container.add(this.startingScreen.loadingLabel.mesh)
@@ -204,7 +205,7 @@ export default class World
         this.startingScreen.startLabel.texture.magFilter = THREE.NearestFilter
         this.startingScreen.startLabel.texture.minFilter = THREE.LinearFilter
         this.startingScreen.startLabel.texture.needsUpdate = true
-        this.startingScreen.startLabel.material = new THREE.MeshBasicMaterial({ transparent: true, depthWrite: false, color: 0xffffff, alphaMap: this.startingScreen.startLabel.texture })
+        this.startingScreen.startLabel.material = new THREE.MeshBasicMaterial({ transparent: true, depthWrite: false, color: palette.white, alphaMap: this.startingScreen.startLabel.texture })
         this.startingScreen.startLabel.material.opacity = 0
         this.startingScreen.startLabel.mesh = new THREE.Mesh(this.startingScreen.startLabel.geometry, this.startingScreen.startLabel.material)
         this.startingScreen.startLabel.mesh.matrixAutoUpdate = false
@@ -239,6 +240,7 @@ export default class World
 
             gsap.to(this.startingScreen.startLabel.material, { opacity: 0, duration: 0.3, delay: 0.4 })
 
+            this.sounds.start()
             this.start()
 
             window.setTimeout(() =>

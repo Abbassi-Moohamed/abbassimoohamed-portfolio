@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import ShadowMaterial from '../Materials/Shadow.js'
 import { TransformControls } from 'three/examples/jsm/controls/TransformControls.js'
+import palette from '../Palette.js'
 
 export default class Shadows
 {
@@ -17,7 +18,7 @@ export default class Shadows
         this.maxDistance = 3
         this.distancePower = 2
         this.zFightingDistance = 0.001
-        this.color = '#d04500'
+        this.color = palette.silver
         this.wireframeVisible = false
         this.items = []
 

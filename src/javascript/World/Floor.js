@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import FloorMaterial from '../Materials/Floor.js'
+import palette from '../Palette.js'
 
 export default class Floor
 {
@@ -17,10 +18,10 @@ export default class Floor
 
         // Colors
         this.colors = {}
-        this.colors.topLeft = '#f5883c'
-        this.colors.topRight = '#ff9043'
-        this.colors.bottomRight = '#fccf92'
-        this.colors.bottomLeft = '#f5aa58'
+        this.colors.topLeft = palette.steelGrey
+        this.colors.topRight = palette.graphite
+        this.colors.bottomRight = palette.ashSilver
+        this.colors.bottomLeft = palette.charcoal
 
         // Material
         this.material = new FloorMaterial()

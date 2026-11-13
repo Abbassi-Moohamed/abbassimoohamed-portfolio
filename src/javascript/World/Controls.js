@@ -2,6 +2,7 @@ import mobileDoubleTriangle from '../../images/mobile/doubleTriangle.png'
 import mobileTriangle from '../../images/mobile/triangle.png'
 import mobileCross from '../../images/mobile/cross.png'
 import EventEmitter from '../Utils/EventEmitter'
+import palette from '../Palette.js'
 
 export default class Controls extends EventEmitter
 {
@@ -167,7 +168,7 @@ export default class Controls extends EventEmitter
         this.touch.joystick.$cursor.style.left = 'calc(50% - 30px)'
         this.touch.joystick.$cursor.style.width = '60px'
         this.touch.joystick.$cursor.style.height = '60px'
-        this.touch.joystick.$cursor.style.border = '2px solid #ffffff'
+        this.touch.joystick.$cursor.style.border = `2px solid ${palette.warmSilver}`
         this.touch.joystick.$cursor.style.borderRadius = '50%'
         this.touch.joystick.$cursor.style.boxSizing = 'border-box'
         this.touch.joystick.$cursor.style.pointerEvents = 'none'
@@ -180,7 +181,7 @@ export default class Controls extends EventEmitter
         this.touch.joystick.$limit.style.left = 'calc(50% - 75px)'
         this.touch.joystick.$limit.style.width = '150px'
         this.touch.joystick.$limit.style.height = '150px'
-        this.touch.joystick.$limit.style.border = '2px solid #ffffff'
+        this.touch.joystick.$limit.style.border = `2px solid ${palette.ashSilver}`
         this.touch.joystick.$limit.style.borderRadius = '50%'
         this.touch.joystick.$limit.style.opacity = '0.25'
         this.touch.joystick.$limit.style.pointerEvents = 'none'
@@ -334,7 +335,7 @@ export default class Controls extends EventEmitter
         this.touch.boost.$border.style.left = 'calc(50% - 30px)'
         this.touch.boost.$border.style.width = '60px'
         this.touch.boost.$border.style.height = '60px'
-        this.touch.boost.$border.style.border = '2px solid #ffffff'
+        this.touch.boost.$border.style.border = `2px solid ${palette.silver}`
         this.touch.boost.$border.style.borderRadius = '10px'
         this.touch.boost.$border.style.boxSizing = 'border-box'
         this.touch.boost.$border.style.opacity = '0.25'
@@ -418,7 +419,7 @@ export default class Controls extends EventEmitter
         this.touch.forward.$border.style.left = 'calc(50% - 30px)'
         this.touch.forward.$border.style.width = '60px'
         this.touch.forward.$border.style.height = '60px'
-        this.touch.forward.$border.style.border = '2px solid #ffffff'
+        this.touch.forward.$border.style.border = `2px solid ${palette.warmSilver}`
         this.touch.forward.$border.style.borderRadius = '10px'
         this.touch.forward.$border.style.boxSizing = 'border-box'
         this.touch.forward.$border.style.opacity = '0.25'
@@ -500,7 +501,7 @@ export default class Controls extends EventEmitter
         this.touch.brake.$border.style.left = 'calc(50% - 30px)'
         this.touch.brake.$border.style.width = '60px'
         this.touch.brake.$border.style.height = '60px'
-        this.touch.brake.$border.style.border = '2px solid #ffffff'
+        this.touch.brake.$border.style.border = `2px solid ${palette.silver}`
         this.touch.brake.$border.style.borderRadius = '10px'
         this.touch.brake.$border.style.boxSizing = 'border-box'
         this.touch.brake.$border.style.opacity = '0.25'
@@ -581,7 +582,7 @@ export default class Controls extends EventEmitter
         this.touch.backward.$border.style.left = 'calc(50% - 30px)'
         this.touch.backward.$border.style.width = '60px'
         this.touch.backward.$border.style.height = '60px'
-        this.touch.backward.$border.style.border = '2px solid #ffffff'
+        this.touch.backward.$border.style.border = `2px solid ${palette.warmSilver}`
         this.touch.backward.$border.style.borderRadius = '10px'
         this.touch.backward.$border.style.boxSizing = 'border-box'
         this.touch.backward.$border.style.opacity = '0.25'

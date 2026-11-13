@@ -6,6 +6,7 @@ import AreaFloorBorderGeometry from '../Geometries/AreaFloorBorderGeometry.js'
 import AreaFenceGeometry from '../Geometries/AreaFenceGeometry.js'
 import AreaFenceMaterial from '../Materials/AreaFence.js'
 import AreaFloorBordereMaterial from '../Materials/AreaFloorBorder.js'
+import palette from '../Palette.js'
 
 export default class Area extends EventEmitter
 {
@@ -72,7 +73,7 @@ export default class Area extends EventEmitter
 
         this.floorBorder.geometry = new AreaFloorBorderGeometry(this.halfExtents.x * 2, this.halfExtents.y * 2, 0.25)
         this.floorBorder.material = new AreaFloorBordereMaterial()
-        this.floorBorder.material.uniforms.uColor.value = new THREE.Color(0xffffff)
+        this.floorBorder.material.uniforms.uColor.value = new THREE.Color(palette.ashSilver)
         this.floorBorder.material.uniforms.uAlpha.value = 0.5
         this.floorBorder.material.uniforms.uLoadProgress.value = 1
         this.floorBorder.material.uniforms.uProgress.value = 1
@@ -95,6 +96,8 @@ export default class Area extends EventEmitter
         // Material
         // this.fence.material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true, transparent: true, opacity: 0.5 })
         this.fence.material = new AreaFenceMaterial()
+        this.fence.material.uniforms.uBorderColor.value = new THREE.Color(palette.ashSilver)
+        this.fence.material.uniforms.uStrikeColor.value = new THREE.Color(palette.silver)
         this.fence.material.uniforms.uBorderAlpha.value = 0.5
         this.fence.material.uniforms.uStrikeAlpha.value = 0.25
 
@@ -130,7 +133,7 @@ export default class Area extends EventEmitter
         this.key.enter.texture.magFilter = THREE.NearestFilter
         this.key.enter.texture.minFilter = THREE.LinearFilter
 
-        this.key.enter.material = new THREE.MeshBasicMaterial({ color: 0xffffff, alphaMap: this.key.enter.texture, transparent: true, opacity: 0, depthWrite: false })
+        this.key.enter.material = new THREE.MeshBasicMaterial({ color: palette.silver, alphaMap: this.key.enter.texture, transparent: true, opacity: 0, depthWrite: false })
 
         this.key.enter.mesh = new THREE.Mesh(this.key.enter.geometry, this.key.enter.material)
         this.key.enter.mesh.rotation.x = Math.PI * 0.5
@@ -148,7 +151,7 @@ export default class Area extends EventEmitter
         this.key.icon.texture.magFilter = THREE.NearestFilter
         this.key.icon.texture.minFilter = THREE.LinearFilter
 
-        this.key.icon.material = new THREE.MeshBasicMaterial({ color: 0xffffff, alphaMap: this.key.icon.texture, transparent: true, opacity: 0, depthWrite: false })
+        this.key.icon.material = new THREE.MeshBasicMaterial({ color: palette.silver, alphaMap: this.key.icon.texture, transparent: true, opacity: 0, depthWrite: false })
 
         this.key.icon.mesh = new THREE.Mesh(this.key.icon.geometry, this.key.icon.material)
         this.key.icon.mesh.rotation.x = Math.PI * 0.5

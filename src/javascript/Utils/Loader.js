@@ -28,7 +28,7 @@ export default class Resources extends EventEmitter
 
         // Images
         this.loaders.push({
-            extensions: ['jpg', 'png', 'webp'],
+            extensions: ['jpg', 'png', 'webp', 'svg'],
             action: (_resource) =>
             {
                 const image = new Image()

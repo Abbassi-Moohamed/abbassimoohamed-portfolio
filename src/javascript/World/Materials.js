@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import FloorShadowMaterial from '../Materials/FloorShadow.js'
 import MatcapMaterial from '../Materials/Matcap.js'
+import palette from '../Palette.js'
 
 export default class Materials
 {
@@ -30,11 +31,11 @@ export default class Materials
         // Setup
         this.pures = {}
         this.pures.items = {}
-        this.pures.items.red = new THREE.MeshBasicMaterial({ color: 0xff0000 })
+        this.pures.items.red = new THREE.MeshBasicMaterial({ color: palette.mutedCopper })
         this.pures.items.red.name = 'pureRed'
-        this.pures.items.white = new THREE.MeshBasicMaterial({ color: 0xffffff })
+        this.pures.items.white = new THREE.MeshBasicMaterial({ color: palette.white })
         this.pures.items.white.name = 'pureWhite'
-        this.pures.items.yellow = new THREE.MeshBasicMaterial({ color: 0xffe889 })
+        this.pures.items.yellow = new THREE.MeshBasicMaterial({ color: palette.ashSilver })
         this.pures.items.yellow.name = 'pureYellow'
     }
 
@@ -43,12 +44,27 @@ export default class Materials
         // Setup
         this.shades = {}
         this.shades.items = {}
-        this.shades.indirectColor = '#d04500'
+        this.shades.indirectColor = palette.silver
+        this.shades.paletteTints = {
+            white: palette.white,
+            orange: palette.mutedCopper,
+            green: palette.ashSilver,
+            brown: palette.charcoal,
+            gray: palette.silver,
+            beige: palette.warmSilver,
+            red: palette.mutedCopper,
+            black: palette.obsidian,
+            emeraldGreen: palette.ashSilver,
+            purple: palette.graphite,
+            blue: palette.silver,
+            yellow: palette.ashSilver,
+            metal: palette.steelGrey
+        }
 
         this.shades.uniforms = {
             uRevealProgress: 0,
             uIndirectDistanceAmplitude: 1.75,
-            uIndirectDistanceStrength: 0.5,
+            uIndirectDistanceStrength: 0.8,
             uIndirectDistancePower: 2.0,
             uIndirectAngleStrength: 1.5,
             uIndirectAngleOffset: 0.6,
@@ -134,6 +150,11 @@ export default class Materials
         this.shades.items.metal.uniforms.matcap.value = this.resources.items.matcapMetalTexture
         this.items.metal = this.shades.items.metal
 
+        for(const [name, color] of Object.entries(this.shades.paletteTints))
+        {
+            this.shades.items[name].uniforms.uPaletteTint.value.set(color)
+        }
+
         // // Gold
         // this.shades.items.gold = new MatcapMaterial()
         // this.shades.items.gold.name = 'shadeGold'
@@ -181,7 +202,7 @@ export default class Materials
     {
         this.items.floorShadow = new FloorShadowMaterial()
         this.items.floorShadow.depthWrite = false
-        this.items.floorShadow.shadowColor = '#d04500'
+        this.items.floorShadow.shadowColor = palette.silver
         this.items.floorShadow.uniforms.uShadowColor.value = new THREE.Color(this.items.floorShadow.shadowColor)
         this.items.floorShadow.uniforms.uAlpha.value = 0
 

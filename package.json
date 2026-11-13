@@ -1,6 +1,6 @@
 {
-  "name": "bruno-simon-folio-2019",
-  "version": "0.0.0",
+  "name": "abbassimoohamed-portfolio",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",

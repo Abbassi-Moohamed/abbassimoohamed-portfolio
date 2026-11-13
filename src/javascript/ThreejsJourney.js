@@ -1,4 +1,5 @@
 import gsap from 'gsap'
+import palette from './Palette.js'
 
 export default class ThreejsJourney
 {
@@ -127,10 +128,10 @@ export default class ThreejsJourney
 //             `,
 //             'color: #705df2;'
 //         )
-        console.log('%cWhat are you doing here?! you sneaky developer...', 'color: #32ffce');
-        console.log('%cDo you want to learn how this portfolio has been made?', 'color: #32ffce');
-        console.log('%cCheckout Three.js Journey 👉 https://threejs-journey.com?c=p2', 'color: #32ffce');
-        console.log('%c— Bruno', 'color: #777777');
+        console.log('%cThanks for exploring my portfolio.', `color: ${palette.ashSilver}`);
+        console.log('%cComputer Engineer & Full-Stack Developer based in Tunis.', `color: ${palette.ashSilver}`);
+        console.log('%cGitHub: https://github.com/Abbassi-Moohamed', `color: ${palette.ashSilver}`);
+        console.log('%c— Abbassi Moohamed', `color: ${palette.warmSilver}`);
     }
 
     hide()

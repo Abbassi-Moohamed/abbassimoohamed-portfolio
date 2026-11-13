@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
-  <rect width="1200" height="675" fill="#000102"/>
-  <path d="M0 0h18v675H0z" fill="#8F5F53"/>
-  <text x="72" y="78" fill="#6E6B6C" font-family="Arial,sans-serif" font-size="25" font-weight="700" letter-spacing="3">JUL - SEP 2024  /  SOFTWARE DEVELOPMENT INTERN</text>
-  <text x="72" y="175" fill="#FFFFFF" font-family="Arial,sans-serif" font-size="70" font-weight="700">SOMATEL</text>
-  <text x="72" y="245" fill="#C0C0C0" font-family="Arial,sans-serif" font-size="31">Real-time telecom service operations dashboard.</text>
-  <text x="72" y="316" fill="#C0C0C0" font-family="Arial,sans-serif" font-size="28">Back-office tools for Orange and Tunisie Telecom teams</text>
-  <text x="72" y="357" fill="#C0C0C0" font-family="Arial,sans-serif" font-size="28">to monitor and manage client network services.</text>
-  <rect x="72" y="425" width="1056" height="1" fill="#565050"/>
-  <text x="72" y="484" fill="#6E6B6C" font-family="Arial,sans-serif" font-size="23" font-weight="700" letter-spacing="2">REAL-TIME UPDATES  /  FRONTEND &amp; BACKEND DEVELOPMENT</text>
-  <text x="72" y="555" fill="#6e6b6c" font-family="Arial,sans-serif" font-size="22">Next.js 14  |  Apollo Client  |  Express  |  GraphQL  |  PostgreSQL</text>
+  <rect width="1200" height="675" fill="#080B12"/>
+  <path d="M0 0h18v675H0z" fill="#00D1FF"/>
+  <text x="72" y="78" fill="#94A3B8" font-family="Arial,sans-serif" font-size="25" font-weight="700" letter-spacing="3">JUL - SEP 2024  /  SOFTWARE DEVELOPMENT INTERN</text>
+  <text x="72" y="175" fill="#F1F5F9" font-family="Arial,sans-serif" font-size="70" font-weight="700">SOMATEL</text>
+  <text x="72" y="245" fill="#CBD5E1" font-family="Arial,sans-serif" font-size="31">Real-time telecom service operations dashboard.</text>
+  <text x="72" y="316" fill="#CBD5E1" font-family="Arial,sans-serif" font-size="28">Back-office tools for Orange and Tunisie Telecom teams</text>
+  <text x="72" y="357" fill="#CBD5E1" font-family="Arial,sans-serif" font-size="28">to monitor and manage client network services.</text>
+  <rect x="72" y="425" width="1056" height="1" fill="#263244"/>
+  <text x="72" y="484" fill="#94A3B8" font-family="Arial,sans-serif" font-size="23" font-weight="700" letter-spacing="2">REAL-TIME UPDATES  /  FRONTEND &amp; BACKEND DEVELOPMENT</text>
+  <text x="72" y="555" fill="#94A3B8" font-family="Arial,sans-serif" font-size="22">Next.js 14  |  Apollo Client  |  Express  |  GraphQL  |  PostgreSQL</text>
 </svg>

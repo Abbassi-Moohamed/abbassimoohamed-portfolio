@@ -89,16 +89,22 @@ export default class Application
         })
         // this.renderer.setClearColor(0x414141, 1)
         this.renderer.setClearColor(palette.obsidian, 1)
-        // this.renderer.setPixelRatio(Math.min(Math.max(window.devicePixelRatio, 1.5), 2))
-        this.renderer.setPixelRatio(2)
+        this.setPixelRatio()
         this.renderer.setSize(this.sizes.viewport.width, this.sizes.viewport.height)
         this.renderer.autoClear = false
 
         // Resize event
         this.sizes.on('resize', () =>
         {
+            this.setPixelRatio()
             this.renderer.setSize(this.sizes.viewport.width, this.sizes.viewport.height)
         })
+    }
+
+    setPixelRatio()
+    {
+        const maxPixelRatio = window.innerWidth < 768 ? 1.5 : 2
+        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, maxPixelRatio))
     }
 
     /**
@@ -163,12 +169,12 @@ export default class Application
         }
 
         this.passes.glowsPass = new ShaderPass(GlowsPass)
-        this.passes.glowsPass.color = palette.silver
+        this.passes.glowsPass.color = palette.cyan
         this.passes.glowsPass.material.uniforms.uPosition.value = new THREE.Vector2(0, 0.25)
         this.passes.glowsPass.material.uniforms.uRadius.value = 0.7
         this.passes.glowsPass.material.uniforms.uColor.value = new THREE.Color(this.passes.glowsPass.color)
         this.passes.glowsPass.material.uniforms.uColor.value.convertLinearToSRGB()
-        this.passes.glowsPass.material.uniforms.uAlpha.value = 0.65
+        this.passes.glowsPass.material.uniforms.uAlpha.value = 0.3
 
         // Debug
         if(this.debug)

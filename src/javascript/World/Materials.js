@@ -31,7 +31,7 @@ export default class Materials
         // Setup
         this.pures = {}
         this.pures.items = {}
-        this.pures.items.red = new THREE.MeshBasicMaterial({ color: palette.mutedCopper })
+        this.pures.items.red = new THREE.MeshBasicMaterial({ color: palette.indigo })
         this.pures.items.red.name = 'pureRed'
         this.pures.items.white = new THREE.MeshBasicMaterial({ color: palette.white })
         this.pures.items.white.name = 'pureWhite'
@@ -47,12 +47,12 @@ export default class Materials
         this.shades.indirectColor = palette.silver
         this.shades.paletteTints = {
             white: palette.white,
-            orange: palette.mutedCopper,
+            orange: palette.indigo,
             green: palette.ashSilver,
             brown: palette.charcoal,
             gray: palette.silver,
             beige: palette.warmSilver,
-            red: palette.mutedCopper,
+            red: palette.indigo,
             black: palette.obsidian,
             emeraldGreen: palette.ashSilver,
             purple: palette.graphite,

@@ -27,16 +27,25 @@
     <link rel="manifest" href="/favicon/site.webmanifest">
     <meta name="apple-mobile-web-app-title" content="Abbassi Moohamed">
     <meta name="application-name" content="Abbassi Moohamed">
-    <meta name="msapplication-TileColor" content="#8f5f53">
-    <meta name="theme-color" content="#000102">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=block" rel="stylesheet">
+    <meta name="msapplication-TileColor" content="#111827">
+    <meta name="theme-color" content="#080b12">
 </head>
 <body>
 
-    <canvas class="canvas js-canvas"></canvas>
+    <canvas class="canvas js-canvas" aria-label="Interactive 3D portfolio"></canvas>
+
+    <main class="webgl-fallback js-webgl-fallback" hidden aria-labelledby="webgl-fallback-title">
+        <div class="webgl-fallback__content">
+            <p class="webgl-fallback__eyebrow">Abbassi Moohamed | Computer Engineer &amp; Full-Stack Developer</p>
+            <h1 id="webgl-fallback-title">The 3D portfolio is unavailable in this browser.</h1>
+            <p>The interactive view could not start, but you can still reach me through these profiles:</p>
+            <nav aria-label="Contact links">
+                <a href="https://github.com/Abbassi-Moohamed" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.linkedin.com/in/abbassi-moohamed/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://www.instagram.com/abbassi.moohamed/" target="_blank" rel="noopener">Instagram</a>
+            </nav>
+        </div>
+    </main>
 
     <div class="threejs-journey is-hover-none js-threejs-journey">
         <div class="message js-message">

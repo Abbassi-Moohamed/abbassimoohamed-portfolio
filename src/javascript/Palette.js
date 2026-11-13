@@ -1,16 +1,17 @@
 const palette = {
-    obsidian: '#000102',
-    charcoal: '#2B2525',
-    graphite: '#403738',
-    steelGrey: '#565050',
-    ashSilver: '#6E6B6C',
-    warmSilver: '#9D8581',
-    silver: '#C0C0C0',
-    white: '#FFFFFF',
-    mutedCopper: '#8F5F53',
+    obsidian: '#080B12',
+    charcoal: '#0D111B',
+    graphite: '#111827',
+    steelGrey: '#182233',
+    ashSilver: '#263244',
+    warmSilver: '#94A3B8',
+    silver: '#CBD5E1',
+    white: '#F1F5F9',
+    cyan: '#00D1FF',
+    indigo: '#6366F1',
     car: '#789597',
-    floorText: '#292D32',
-    floorAccent: '#8F5F53'
+    floorText: '#F1F5F9',
+    floorAccent: '#00D1FF'
 }
 
 export default palette

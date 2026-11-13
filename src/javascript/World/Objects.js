@@ -262,6 +262,59 @@ export default class Objects
         return container
     }
 
+    getMergedAsset(_asset)
+    {
+        const geometriesByMaterial = new Map()
+        const unmergedMeshes = []
+        const container = new THREE.Object3D()
+
+        _asset.updateMatrixWorld(true)
+        _asset.traverse((_child) =>
+        {
+            if(!(_child instanceof THREE.Mesh))
+            {
+                return
+            }
+
+            if(Array.isArray(_child.material))
+            {
+                const mesh = _child.clone()
+                mesh.geometry = _child.geometry.clone().applyMatrix4(_child.matrixWorld)
+                mesh.position.set(0, 0, 0)
+                mesh.quaternion.identity()
+                mesh.scale.set(1, 1, 1)
+                mesh.matrix.identity()
+                mesh.matrixAutoUpdate = false
+                unmergedMeshes.push(mesh)
+                return
+            }
+
+            const geometry = _child.geometry.clone().applyMatrix4(_child.matrixWorld)
+            const geometries = geometriesByMaterial.get(_child.material) || []
+            geometries.push(geometry)
+            geometriesByMaterial.set(_child.material, geometries)
+        })
+
+        for(const [material, _geometries] of geometriesByMaterial)
+        {
+            const geometry = BufferGeometryUtils.mergeGeometries(_geometries)
+
+            if(!geometry)
+            {
+                throw new Error(`Unable to merge asset geometry for material: ${material.name}`)
+            }
+
+            container.add(new THREE.Mesh(geometry, material))
+        }
+
+        for(const _mesh of unmergedMeshes)
+        {
+            container.add(_mesh)
+        }
+
+        return container
+    }
+
     add(_options)
     {
         const object = {}
@@ -287,7 +340,9 @@ export default class Objects
         const sleep = typeof _options.sleep === 'undefined' ? true : _options.sleep
 
         // Container
-        object.container = this.getConvertedMesh(_options.base.children, _options)
+        object.container = _options.preserveMaterials
+            ? this.getMergedAsset(_options.base)
+            : this.getConvertedMesh(_options.base.children, _options)
         object.container.position.copy(offset)
         object.container.rotation.copy(rotation)
         this.container.add(object.container)

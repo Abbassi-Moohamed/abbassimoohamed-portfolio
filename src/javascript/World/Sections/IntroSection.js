@@ -28,6 +28,7 @@ export default class IntroSection
         this.setStatic()
         this.setInstructions()
         this.setOtherInstructions()
+        this.setWorkstation()
         this.setTitles()
         this.setTiles()
         this.setDikes()
@@ -147,16 +148,57 @@ export default class IntroSection
         this.otherInstructions.label.mesh.matrixAutoUpdate = false
         this.otherInstructions.container.add(this.otherInstructions.label.mesh)
 
-        // Horn
-        this.otherInstructions.horn = this.objects.add({
-            base: this.resources.items.hornBase.scene,
-            collision: this.resources.items.hornCollision.scene,
-            offset: new THREE.Vector3(this.otherInstructions.x + 1.25, this.otherInstructions.y - 2.75, 0.2),
-            rotation: new THREE.Euler(0, 0, 0.5),
-            duplicated: true,
-            shadow: { sizeX: 1.65, sizeY: 0.75, offsetZ: - 0.1, alpha: 0.4 },
+    }
+
+    setWorkstation()
+    {
+        const workstation = this.resources.items.introWorkstation.scene.clone(true)
+        workstation.scale.setScalar(0.02)
+        workstation.updateMatrixWorld(true)
+
+        const bounds = new THREE.Box3().setFromObject(workstation)
+        const size = bounds.getSize(new THREE.Vector3())
+        const center = bounds.getCenter(new THREE.Vector3())
+        workstation.position.set(-center.x, -center.y, -bounds.min.z)
+        workstation.updateMatrixWorld(true)
+
+        const workstationMaterials = {
+            ligrey: new THREE.MeshBasicMaterial({ color: palette.silver }),
+            gray: new THREE.MeshBasicMaterial({ color: palette.warmSilver }),
+            black: new THREE.MeshBasicMaterial({ color: palette.graphite }),
+            darker_grey: new THREE.MeshBasicMaterial({ color: palette.steelGrey })
+        }
+
+        workstation.traverse((_child) =>
+        {
+            if(_child instanceof THREE.Mesh)
+            {
+                const materialName = _child.material.name.toLowerCase()
+                _child.material = workstationMaterials[materialName] || workstationMaterials.ligrey
+            }
+        })
+
+        const collision = new THREE.Object3D()
+        const collisionCenter = new THREE.Object3D()
+        collisionCenter.name = 'center'
+        collisionCenter.position.z = size.z * 0.5
+
+        const collisionBox = new THREE.Object3D()
+        collisionBox.name = 'box'
+        collisionBox.position.copy(collisionCenter.position)
+        collisionBox.scale.copy(size)
+
+        collision.add(collisionCenter, collisionBox)
+
+        this.workstation = this.objects.add({
+            base: workstation,
+            preserveMaterials: true,
+            collision,
+            offset: new THREE.Vector3(this.x + 17.25, this.y - 4.75, size.z * 0.5),
+            rotation: new THREE.Euler(0, 0, 0),
+            shadow: { sizeX: 1.8, sizeY: 1.1, offsetZ: - 0.1, alpha: 0.4 },
             mass: 1.5,
-            soundName: 'horn',
+            soundName: 'brick',
             sleep: false
         })
     }

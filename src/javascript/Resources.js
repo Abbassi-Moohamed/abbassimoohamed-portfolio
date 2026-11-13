@@ -32,6 +32,7 @@ export default class Resources extends EventEmitter
             { name: 'introStaticBase', source: './models/intro/static/base.glb' },
             { name: 'introStaticCollision', source: './models/intro/static/collision.glb' },
             { name: 'introStaticFloorShadow', source: './models/intro/static/floorShadow.png', type: 'texture' },
+            { name: 'introWorkstation', source: './models/technical/developer-workstation.glb' },
 
             { name: 'introInstructionsLabels', source: './models/intro/instructions/labels.glb' },
             { name: 'introInstructionsArrows', source: './models/intro/instructions/arrows.png', type: 'texture' },
@@ -119,13 +120,13 @@ export default class Resources extends EventEmitter
             { name: 'playgroundStaticCollision', source: './models/playground/static/collision.glb' },
             { name: 'playgroundStaticFloorShadow', source: './models/playground/static/floorShadow.png', type: 'texture' },
 
-            // Brick
-            { name: 'brickBase', source: './models/brick/base.glb' },
-            { name: 'brickCollision', source: './models/brick/collision.glb' },
-
             // Horn
             { name: 'hornBase', source: './models/horn/base.glb' },
             { name: 'hornCollision', source: './models/horn/collision.glb' },
+
+            // Brick
+            { name: 'brickBase', source: './models/brick/base.glb' },
+            { name: 'brickCollision', source: './models/brick/collision.glb' },
 
             // Webby trophy
             { name: 'webbyTrophyBase', source: './models/webbyTrophy/base.glb' },

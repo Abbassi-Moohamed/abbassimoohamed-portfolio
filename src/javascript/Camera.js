@@ -12,6 +12,7 @@ export default class Camera
         this.renderer = _options.renderer
         this.debug = _options.debug
         this.config = _options.config
+        this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
         // Set up
         this.container = new THREE.Object3D()
@@ -56,7 +57,7 @@ export default class Camera
             const angle = this.angle.items[_name]
             if(typeof angle !== 'undefined')
             {
-                gsap.to(this.angle.value, { ...angle, duration: 2, ease: 'power1.inOut' })
+                gsap.to(this.angle.value, { ...angle, duration: this.reducedMotion ? 0 : 2, ease: 'power1.inOut' })
             }
         }
 

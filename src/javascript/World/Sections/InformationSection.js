@@ -36,7 +36,7 @@ export default class InformationSection
         context.drawImage(image, 0, 0)
 
         const imageData = context.getImageData(0, 0, canvas.width, canvas.height)
-        const mainColor = new THREE.Color(palette.mutedCopper).convertLinearToSRGB()
+        const mainColor = new THREE.Color(palette.indigo).convertLinearToSRGB()
 
         for(let y = 0; y < canvas.height; y++)
         {

@@ -25,6 +25,51 @@ export default class InformationSection
         this.setTiles()
     }
 
+    createInstagramTexture(_sourceTexture)
+    {
+        const image = _sourceTexture.image
+        const canvas = document.createElement('canvas')
+        canvas.width = image.width
+        canvas.height = image.height
+
+        const context = canvas.getContext('2d')
+        context.drawImage(image, 0, 0)
+
+        const imageData = context.getImageData(0, 0, canvas.width, canvas.height)
+        const mainColor = new THREE.Color(palette.mutedCopper).convertLinearToSRGB()
+
+        for(let y = 0; y < canvas.height; y++)
+        {
+            for(let x = 0; x < canvas.width; x++)
+            {
+                const index = (y * canvas.width + x) * 4
+                const red = imageData.data[index]
+                const green = imageData.data[index + 1]
+                const blue = imageData.data[index + 2]
+                const brightness = Math.min(red, green, blue)
+                const saturation = Math.max(red, green, blue) - brightness
+
+                if(brightness > 225 && saturation < 24)
+                {
+                    continue
+                }
+
+                imageData.data[index] = mainColor.r * 255
+                imageData.data[index + 1] = mainColor.g * 255
+                imageData.data[index + 2] = mainColor.b * 255
+            }
+        }
+
+        context.putImageData(imageData, 0, 0)
+
+        const texture = new THREE.CanvasTexture(canvas)
+        texture.colorSpace = THREE.SRGBColorSpace
+        texture.flipY = _sourceTexture.flipY
+        texture.needsUpdate = true
+
+        return texture
+    }
+
     setStatic()
     {
         const base = this.resources.items.informationStaticBase.scene.clone(true)
@@ -60,6 +105,60 @@ export default class InformationSection
             console.warn(`Information scene is missing expected model parts: ${missingParts.join(', ')}`)
         }
 
+        const instagram = this.resources.items.informationInstagramModel.scene
+        let instagramMesh
+        instagram.traverse((_part) =>
+        {
+            if(!instagramMesh && _part.isMesh)
+            {
+                instagramMesh = _part
+            }
+        })
+
+        const instagramBacking = base.getObjectByName('shadeWhite_033')
+        const instagramMaterial = instagramMesh && (Array.isArray(instagramMesh.material) ? instagramMesh.material[0] : instagramMesh.material)
+        const instagramTexture = instagramMaterial && instagramMaterial.map
+        if(!instagramMesh || !instagramBacking || !instagramTexture)
+        {
+            console.warn('Information scene is missing the Instagram model, texture, or social-icon backing')
+        }
+        else
+        {
+            const backingBounds = new THREE.Box3().setFromObject(instagramBacking)
+            instagramMesh = instagramMesh.clone()
+            instagramMesh.name = 'shadeOrange'
+            const tintedTexture = this.createInstagramTexture(instagramTexture)
+            instagramMesh.material = new THREE.MeshBasicMaterial({
+                map: tintedTexture,
+                side: THREE.DoubleSide
+            })
+            instagramMesh.geometry.computeBoundingBox()
+
+            const instagramRotation = new THREE.Euler(Math.PI / 2, 0, 0)
+            const modelBounds = instagramMesh.geometry.boundingBox.clone()
+            modelBounds.applyMatrix4(new THREE.Matrix4().makeRotationFromEuler(instagramRotation))
+            const modelSize = modelBounds.getSize(new THREE.Vector3())
+            const backingSize = backingBounds.getSize(new THREE.Vector3())
+            const backingCenter = backingBounds.getCenter(new THREE.Vector3())
+            const instagramSize = Math.max(modelSize.x, modelSize.z)
+            const linkedInBacking = base.getObjectByName('shadeWhite.115')
+            const linkedInIcon = base.getObjectByName('shadeOrange.003')
+            const targetSize = linkedInIcon
+                ? new THREE.Box3().setFromObject(linkedInIcon).getSize(new THREE.Vector3()).x
+                : linkedInBacking
+                    ? new THREE.Box3().setFromObject(linkedInBacking).getSize(new THREE.Vector3()).x * 0.82
+                    : backingSize.x * 0.82
+            const scale = targetSize / instagramSize
+
+            instagramMesh.scale.set(scale * 1.25, scale, scale * 5)
+            instagramMesh.rotation.copy(instagramRotation)
+            instagramMesh.position.set(
+                backingCenter.x - modelBounds.getCenter(new THREE.Vector3()).x * scale,
+                backingCenter.y - modelBounds.getCenter(new THREE.Vector3()).y * scale,
+                backingBounds.max.z + 0.01 - modelBounds.min.z * scale
+            )
+        }
+
         const flagMesh = new THREE.Mesh(new THREE.PlaneGeometry(2.2, 1.4667))
         flagMesh.name = 'abbassiTunisiaFlag'
         flagMesh.position.set(- 3.1306, 5.025, 2.67)
@@ -74,6 +173,13 @@ export default class InformationSection
             duplicated: true,
             mass: 0
         })
+
+        if(instagramMesh)
+        {
+            const center = staticObject.collision.center
+            instagramMesh.position.sub(new THREE.Vector3(center.x, center.y, center.z))
+            staticObject.container.add(instagramMesh)
+        }
 
         const flagTexture = this.resources.items.informationTunisiaFlagTexture.clone()
         flagTexture.colorSpace = THREE.SRGBColorSpace

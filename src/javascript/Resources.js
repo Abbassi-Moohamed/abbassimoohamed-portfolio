@@ -102,8 +102,9 @@ export default class Resources extends EventEmitter
             { name: 'projectsPortfolioFloor', source: './models/projects/abbassi/floorTexture.svg', type: 'texture' },
 
             // Information
-            { name: 'informationStaticBase', source: './models/information/static/base-abbassi-social-order.glb' },
+            { name: 'informationStaticBase', source: './models/information/static/base-abbassi-social-instagram.glb' },
             { name: 'informationStaticCollision', source: './models/information/static/collision-abbassi.glb' },
+            { name: 'informationInstagramModel', source: './models/information/static/instagram.glb' },
             { name: 'informationStaticFloorShadow', source: './models/information/static/floorShadow-abbassi.png', type: 'texture' },
             { name: 'informationTunisiaFlag', source: './models/information/static/tunisiaFlag.svg', type: 'texture' },
             { name: 'informationContactInstagramLabel', source: './models/information/static/contactInstagramLabel.svg', type: 'texture' },

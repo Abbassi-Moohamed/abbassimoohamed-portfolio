@@ -454,7 +454,7 @@ export default class Physics
             /**
              * Steering
              */
-            if(this.controls.touch)
+            if(this.controls.enabled && this.controls.touch)
             {
                 let deltaAngle = 0
 
@@ -476,7 +476,7 @@ export default class Physics
                 }
             }
 
-            if(!this.controls.touch || !this.controls.touch.joystick.active)
+            if(!this.controls.enabled || !this.controls.touch || !this.controls.touch.joystick.active)
             {
                 const steerStrength = this.time.delta * this.car.options.controlsSteeringSpeed
 

@@ -10,6 +10,7 @@ export default class InformationSection
         this.resources = _options.resources
         this.objects = _options.objects
         this.areas = _options.areas
+        this.panel = _options.panel
         this.tiles = _options.tiles
         this.debug = _options.debug
         this.x = _options.x
@@ -20,6 +21,7 @@ export default class InformationSection
         this.container.matrixAutoUpdate = false
 
         this.setStatic()
+        this.setEngineeringStations()
         this.setLinks()
         this.setActivities()
         this.setTiles()
@@ -188,6 +190,131 @@ export default class InformationSection
             map: flagTexture,
             side: THREE.DoubleSide
         })
+    }
+
+    setEngineeringStations()
+    {
+        const stations = [
+            {
+                name: 'ABOUT ME',
+                eyebrow: 'ENGINEERING HQ / PROFILE',
+                description: 'Abbassi Mouhamed is a Computer Engineer and Full-Stack Developer based in Tunis, Tunisia.',
+                highlights: [
+                    'Building scalable applications and real-time systems.',
+                    'Focus areas include full-stack engineering, 3D visualization, cloud architecture, and automation.'
+                ],
+                technologies: ['Full-Stack Development', '3D Visualization', 'Cloud Architecture', 'DevOps'],
+                screenLine: 'PROFILE / COMPUTER ENGINEER / TUNIS'
+            },
+            {
+                name: 'EXPERIENCE',
+                eyebrow: 'ENGINEERING HQ / PROFESSIONAL TIMELINE',
+                description: 'Professional experience across 3D software, telecom operations, and full-stack e-commerce.',
+                highlights: [
+                    'Mashroom | Final-Year Project | Feb-Aug 2025: 3D visualization ecosystem, reusable library, marketplace, and AR experiences.',
+                    'Somatel | Software Development Intern | Jul-Sep 2024: telecom dashboard and real-time GraphQL backend.',
+                    'Swift Code | MERN Stack Intern | Jun-Aug 2023: parapharmacy e-commerce application and REST backend.'
+                ],
+                screenLine: 'MASHROOM / SOMATEL / SWIFT CODE'
+            },
+            {
+                name: 'TECHNICAL SKILLS',
+                eyebrow: 'ENGINEERING HQ / CAPABILITY MATRIX',
+                description: 'Explore the technologies and engineering disciplines used across my projects.',
+                highlights: [
+                    'Frontend: React, Next.js, Angular, TypeScript',
+                    'Backend: Node.js, Express, NestJS, Spring, Symfony, GraphQL, REST',
+                    'Databases: PostgreSQL, MySQL, MongoDB, Firebase, Firestore',
+                    'Architecture: Microservices, API gateways, service discovery, Web Components',
+                    'Real-Time: Socket.IO, GraphQL subscriptions, real-time dashboards',
+                    'DevOps and Cloud: Docker, Jenkins, CI/CD, Linux, Firebase, cloud services',
+                    '3D Development: Three.js, GLSL, WebGL, AR visualization',
+                    'AI and Automation: recommendations, task automation, AI-assisted learning'
+                ],
+                screenLine: 'FRONTEND / BACKEND / DATA / 3D / DEVOPS'
+            }
+        ]
+
+        const baseGeometry = new THREE.BoxGeometry(2.4, 0.9, 0.28)
+        const standGeometry = new THREE.BoxGeometry(0.34, 0.3, 1.1)
+        const screenHousingGeometry = new THREE.BoxGeometry(3.5, 0.24, 2.15)
+        const frameMaterial = new THREE.MeshBasicMaterial({ color: palette.steelGrey })
+        const baseMaterial = new THREE.MeshBasicMaterial({ color: palette.graphite })
+        const screenGeometry = new THREE.PlaneGeometry(3.18, 1.83)
+
+        for(let i = 0; i < stations.length; i++)
+        {
+            const station = stations[i]
+            const x = this.x + 7 + i * 8
+            const y = this.y + 8
+            const terminal = new THREE.Group()
+            terminal.position.set(x, y, 0)
+
+            const base = new THREE.Mesh(baseGeometry, baseMaterial)
+            base.position.z = 0.18
+            terminal.add(base)
+
+            const stand = new THREE.Mesh(standGeometry, frameMaterial)
+            stand.position.z = 0.85
+            terminal.add(stand)
+
+            const housing = new THREE.Mesh(screenHousingGeometry, frameMaterial)
+            housing.position.z = 2.4
+            terminal.add(housing)
+
+            const canvas = document.createElement('canvas')
+            canvas.width = 768
+            canvas.height = 440
+            const context = canvas.getContext('2d')
+            context.fillStyle = palette.charcoal
+            context.fillRect(0, 0, canvas.width, canvas.height)
+            context.fillStyle = i === 1 ? palette.indigo : palette.cyan
+            context.fillRect(0, 0, 12, canvas.height)
+            context.fillStyle = palette.warmSilver
+            context.font = '600 27px Arial'
+            context.fillText('ENGINEERING HQ / STATION 0' + (i + 1), 42, 66)
+            context.fillStyle = palette.white
+            context.font = '700 49px Arial'
+            context.fillText(station.name, 42, 144)
+            context.fillStyle = palette.silver
+            context.font = '27px Arial'
+            context.fillText(station.screenLine, 42, 224)
+            context.fillText(station.description.slice(0, 48), 42, 270)
+            context.fillStyle = palette.cyan
+            context.fillRect(42, 324, 680, 3)
+            context.fillStyle = palette.warmSilver
+            context.font = '600 25px Arial'
+            context.fillText('DRIVE CLOSE / PRESS E TO INSPECT', 42, 382)
+
+            const screenTexture = new THREE.CanvasTexture(canvas)
+            screenTexture.colorSpace = THREE.SRGBColorSpace
+            screenTexture.anisotropy = 2
+            const screen = new THREE.Mesh(
+                screenGeometry,
+                new THREE.MeshBasicMaterial({ map: screenTexture, toneMapped: false, side: THREE.DoubleSide })
+            )
+            screen.position.set(0, -0.13, 2.4)
+            screen.rotation.x = Math.PI * 0.5
+            terminal.add(screen)
+            this.container.add(terminal)
+
+            const area = this.areas.add({
+                position: new THREE.Vector2(x, y - 2.1),
+                halfExtents: new THREE.Vector2(2.5, 1.8)
+            })
+            area.on('in', () =>
+            {
+                this.panel.showPrompt(station, area)
+            })
+            area.on('out', () =>
+            {
+                this.panel.hidePrompt(station)
+            })
+            area.on('interact', () =>
+            {
+                this.panel.open(station, area)
+            })
+        }
     }
 
     setLinks()

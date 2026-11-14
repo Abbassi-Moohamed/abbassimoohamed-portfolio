@@ -34,6 +34,43 @@
 
     <canvas class="canvas js-canvas" aria-label="Interactive 3D portfolio"></canvas>
 
+    <aside class="world-hud" aria-label="Driving guidance">
+        <p class="world-hud__eyebrow">CURRENT DISTRICT</p>
+        <p class="world-hud__location js-location-indicator">ENGINEERING GARAGE</p>
+        <p class="world-hud__controls js-controls-hint">WASD / ARROWS DRIVE | SPACE BRAKE | E INSPECT</p>
+    </aside>
+    <p class="start-hint js-start-hint" hidden>START ENGINE <span class="js-start-action">CLICK OR PRESS E</span></p>
+    <button class="interaction-prompt js-interaction-prompt" type="button" hidden>
+        <span class="interaction-prompt__name js-prompt-label"></span>
+        <span class="interaction-prompt__action js-prompt-action"></span>
+    </button>
+
+    <section class="portfolio-panel js-portfolio-panel" role="dialog" aria-modal="true" aria-labelledby="portfolio-panel-title" hidden>
+        <article class="portfolio-panel__dialog">
+            <header class="portfolio-panel__header">
+                <div>
+                    <p class="portfolio-panel__eyebrow js-panel-eyebrow"></p>
+                    <h2 id="portfolio-panel-title" class="js-panel-title"></h2>
+                </div>
+                <button class="portfolio-panel__close js-panel-close" type="button" aria-label="Close and return to driving">CLOSE <span>ESC</span></button>
+            </header>
+            <p class="portfolio-panel__description js-panel-description"></p>
+            <section class="portfolio-panel__section js-panel-contribution-section" hidden>
+                <h3>ENGINEERING CONTRIBUTION</h3>
+                <p class="js-panel-contribution"></p>
+            </section>
+            <section class="portfolio-panel__section js-panel-highlights-section" hidden>
+                <h3>DETAILS</h3>
+                <ul class="portfolio-panel__list js-panel-highlights"></ul>
+            </section>
+            <section class="portfolio-panel__section js-panel-technology-section" hidden>
+                <h3>TECHNOLOGIES</h3>
+                <ul class="portfolio-panel__technologies js-panel-technologies"></ul>
+            </section>
+            <nav class="portfolio-panel__links js-panel-links" aria-label="Project links" hidden></nav>
+        </article>
+    </section>
+
     <main class="webgl-fallback js-webgl-fallback" hidden aria-labelledby="webgl-fallback-title">
         <div class="webgl-fallback__content">
             <p class="webgl-fallback__eyebrow">Abbassi Moohamed | Computer Engineer &amp; Full-Stack Developer</p>

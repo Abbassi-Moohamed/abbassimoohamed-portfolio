@@ -54,6 +54,8 @@ export default class Application
         {
             this.config.touch = true
             this.world.controls.setTouch()
+            document.querySelector('.js-controls-hint').textContent = 'TOUCH JOYSTICK TO DRIVE / TAP PROMPTS TO INSPECT'
+            document.querySelector('.js-start-action').textContent = 'TAP TO START'
 
             this.passes.horizontalBlurPass.strength = 1
             this.passes.horizontalBlurPass.material.uniforms.uStrength.value = new THREE.Vector2(this.passes.horizontalBlurPass.strength, 0)

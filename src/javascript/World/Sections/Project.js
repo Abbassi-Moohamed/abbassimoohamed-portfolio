@@ -13,11 +13,15 @@ export default class Project
         this.resources = _options.resources
         this.objects = _options.objects
         this.areas = _options.areas
+        this.panel = _options.panel
         this.name = _options.name
+        this.eyebrow = _options.eyebrow
+        this.description = _options.description
+        this.contribution = _options.contribution
+        this.technologies = _options.technologies
         this.geometries = _options.geometries
         this.meshes = _options.meshes
         this.debug = _options.debug
-        this.name = _options.name
         this.x = _options.x
         this.y = _options.y
         this.imageSources = _options.imageSources
@@ -193,9 +197,17 @@ export default class Project
             position: new THREE.Vector2(this.x + this.link.x, this.y + this.floor.y + this.link.y),
             halfExtents: new THREE.Vector2(this.link.halfExtents.x, this.link.halfExtents.y)
         })
+        this.floor.area.on('in', () =>
+        {
+            this.panel.showPrompt(this, this.floor.area)
+        })
+        this.floor.area.on('out', () =>
+        {
+            this.panel.hidePrompt(this)
+        })
         this.floor.area.on('interact', () =>
         {
-            window.open(this.link.href, '_blank')
+            this.panel.open(this, this.floor.area)
         })
 
         // Area label

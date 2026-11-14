@@ -29,6 +29,7 @@ export default class IntroSection
         this.setInstructions()
         this.setOtherInstructions()
         this.setWorkstation()
+        this.setIdentityDisplay()
         this.setTitles()
         this.setTiles()
         this.setDikes()
@@ -201,6 +202,48 @@ export default class IntroSection
             soundName: 'brick',
             sleep: false
         })
+    }
+
+    setIdentityDisplay()
+    {
+        const canvas = document.createElement('canvas')
+        canvas.width = 1024
+        canvas.height = 512
+        const context = canvas.getContext('2d')
+
+        context.fillStyle = palette.charcoal
+        context.fillRect(0, 0, canvas.width, canvas.height)
+        context.fillStyle = palette.cyan
+        context.fillRect(0, 0, 16, canvas.height)
+        context.fillStyle = palette.warmSilver
+        context.font = '600 30px Arial'
+        context.fillText('ENGINEERING GARAGE / TUNIS, TUNISIA', 64, 86)
+        context.fillStyle = palette.white
+        context.font = '700 58px Arial'
+        context.fillText('ABBASSI MOOHAMED', 64, 180)
+        context.fillStyle = palette.cyan
+        context.font = '600 35px Arial'
+        context.fillText('COMPUTER ENGINEER & FULL-STACK DEVELOPER', 64, 245)
+        context.fillStyle = palette.silver
+        context.font = '32px Arial'
+        context.fillText('Building scalable applications, real-time systems,', 64, 335)
+        context.fillText('and intelligent software solutions.', 64, 382)
+        context.fillStyle = palette.indigo
+        context.fillRect(64, 430, 896, 3)
+
+        const texture = new THREE.CanvasTexture(canvas)
+        texture.colorSpace = THREE.SRGBColorSpace
+        texture.anisotropy = 4
+
+        const display = new THREE.Mesh(
+            new THREE.PlaneGeometry(5.2, 2.6),
+            new THREE.MeshBasicMaterial({ map: texture, toneMapped: false })
+        )
+        display.position.set(this.x + 17.25, this.y - 3.5, 3.1)
+        display.rotation.x = Math.PI * 0.5
+        display.matrixAutoUpdate = false
+        display.updateMatrix()
+        this.container.add(display)
     }
 
     setTitles()

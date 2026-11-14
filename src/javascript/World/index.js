@@ -23,6 +23,7 @@ import Controls from './Controls.js'
 import Sounds from './Sounds.js'
 import gsap from 'gsap'
 import EasterEggs from './EasterEggs.js'
+import PortfolioPanel from './PortfolioPanel.js'
 
 export default class World
 {
@@ -75,8 +76,10 @@ export default class World
         this.areas.car = this.car
         this.setTiles()
         this.setWalls()
+        this.panel = new PortfolioPanel({ controls: this.controls })
         this.setSections()
         this.setEasterEggs()
+        this.setLocationIndicator()
     }
 
     setReveal()
@@ -172,6 +175,7 @@ export default class World
     setStartingScreen()
     {
         this.startingScreen = {}
+        this.startingScreen.hint = document.querySelector('.js-start-hint')
 
         // Area
         this.startingScreen.area = this.areas.add({
@@ -229,12 +233,14 @@ export default class World
                 gsap.to(this.startingScreen.area.floorBorder.material.uniforms.uAlpha, { value: 0.3, duration: 0.3 })
                 gsap.to(this.startingScreen.loadingLabel.material, { opacity: 0, duration: 0.3 })
                 gsap.to(this.startingScreen.startLabel.material, { opacity: 1, duration: 0.3, delay: 0.3 })
+                this.startingScreen.hint.hidden = false
             })
         })
 
         // On interact, reveal
         this.startingScreen.area.on('interact', () =>
         {
+            this.startingScreen.hint.hidden = true
             this.startingScreen.area.deactivate()
             gsap.to(this.startingScreen.area.floorBorder.material.uniforms.uProgress, { value: 0, duration: 0.3, delay: 0.4 })
 
@@ -415,7 +421,9 @@ export default class World
             zones: this.zones,
             walls: this.walls,
             tiles: this.tiles,
-            debug: this.debugFolder
+            debug: this.debugFolder,
+            controls: this.controls,
+            panel: this.panel
         }
 
         // // Distinction A
@@ -510,5 +518,38 @@ export default class World
             physics: this.physics
         })
         this.container.add(this.easterEggs.container)
+    }
+
+    setLocationIndicator()
+    {
+        const label = document.querySelector('.js-location-indicator')
+        const locations = [
+            { name: 'PRODUCT EXHIBITION DISTRICT', x: 102, y: -30, halfX: 82, halfY: 16 },
+            { name: 'PLAYGROUND', x: -38, y: -34, halfX: 24, halfY: 13 },
+            { name: 'ENGINEERING CROSSROADS', x: 0, y: -30, halfX: 13, halfY: 10 },
+            { name: 'ENGINEERING HQ / CONTACT', x: 17, y: -49, halfX: 25, halfY: 20 },
+            { name: 'ENGINEERING GARAGE', x: 0, y: 0, halfX: 24, halfY: 20 }
+        ]
+        let currentLocation = ''
+
+        this.time.on('tick', () =>
+        {
+            if(!this.car)
+            {
+                return
+            }
+
+            const position = this.car.physics.car.chassis.body.position
+            const location = locations.find((_item) =>
+                Math.abs(position.x - _item.x) <= _item.halfX &&
+                Math.abs(position.y - _item.y) <= _item.halfY)
+            const nextLocation = location ? location.name : 'ENGINEERING CITY'
+
+            if(nextLocation !== currentLocation)
+            {
+                currentLocation = nextLocation
+                label.textContent = nextLocation
+            }
+        })
     }
 }

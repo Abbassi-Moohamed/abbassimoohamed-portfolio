@@ -22,6 +22,7 @@ export default class Controls extends EventEmitter
 
     setActions()
     {
+        this.enabled = true
         this.actions = {}
         this.actions.up = false
         this.actions.right = false
@@ -44,6 +45,16 @@ export default class Controls extends EventEmitter
         })
     }
 
+    setEnabled(_enabled)
+    {
+        this.enabled = _enabled
+
+        for(const _action in this.actions)
+        {
+            this.actions[_action] = false
+        }
+    }
+
     setKeyboard()
     {
         this.keyboard = {}
@@ -51,6 +62,11 @@ export default class Controls extends EventEmitter
 
         this.keyboard.events.keyDown = (_event) =>
         {
+            if(!this.enabled)
+            {
+                return
+            }
+
             switch(_event.code)
             {
                 case 'ArrowUp':
@@ -94,6 +110,11 @@ export default class Controls extends EventEmitter
 
         this.keyboard.events.keyUp = (_event) =>
         {
+            if(!this.enabled)
+            {
+                return
+            }
+
             switch(_event.code)
             {
                 case 'ArrowUp':
